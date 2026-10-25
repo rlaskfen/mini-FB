@@ -5,7 +5,7 @@
 ## 기술 제약 (반드시 지킬 것)
 - 프론트엔드만. 서버, 로그인, DB 없음
 - 저장은 localStorage (`src/lib/storage.js` 경유. 게임 진행/최고 점수/이름 패치를 각각 별도 키로 저장)
-- 스택: Vite + React (JS). 정적 호스팅(Vercel/Netlify/GitHub Pages)으로 배포
+- 스택: Vite + React (JS). Firebase Hosting(정적 호스팅)으로 배포
 - 메뉴 화면은 3개: 이적시장, 내 스쿼드, 시즌. 새 게임 직후에만 스태프 고용 화면(Hire.jsx)이 메뉴 없이 따로 뜬다
 - PC 웹 기준 레이아웃 (본문 최대 1200px, 상단 메뉴, 본문+사이드 2단). 창이 960px보다 좁으면 1단으로 쌓인다. (원 명세는 모바일 우선이었으나 PC 기준으로 변경함)
 - 선수 사진, 클럽 로고, 엠블럼 사용 금지. 텍스트와 숫자 UI만
@@ -58,5 +58,7 @@
 - `npm run gen:players` — 선수 데이터 재생성 (SEED 환경변수로 시드 변경)
 
 ## 배포
-- GitHub Pages. `.github/workflows/deploy.yml`이 main에 push될 때마다 빌드(`dist/`)해서 배포한다
-- 저장소 Settings → Pages → Source가 "GitHub Actions"여야 한다
+- Firebase Hosting. `npm run deploy` = 빌드(`dist/`) 후 `firebase deploy --only hosting`
+- 설정: `firebase.json`(배포 폴더 dist), `.firebaserc`(Firebase 프로젝트 ID)
+- 처음 한 번 `npx firebase-tools login`이 필요하다 (브라우저 로그인이라 사용자가 직접 터미널에서 실행)
+- 코드 보관은 GitHub (origin = https://github.com/rlaskfen/mini-FB.git). GitHub에 올린다고 자동 배포되지는 않는다
