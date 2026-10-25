@@ -56,3 +56,7 @@
 - `npm run build` — `dist/`로 정적 빌드 (`base: './'`라 어느 정적 호스팅이든 그대로 업로드 가능)
 - `npm run preview` — 빌드 결과 미리보기
 - `npm run gen:players` — 선수 데이터 재생성 (SEED 환경변수로 시드 변경)
+
+## 배포
+- GitHub Pages. `.github/workflows/deploy.yml`이 main에 push될 때마다 빌드(`dist/`)해서 배포한다
+- 저장소 Settings → Pages → Source가 "GitHub Actions"여야 한다
